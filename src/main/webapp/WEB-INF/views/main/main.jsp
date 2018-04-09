@@ -24,12 +24,25 @@ ws.onclose = function(event) {
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		name: <b>${pageContext.request.userPrincipal.name}</b> (${timestamp})
 		<form id="form" method="get" action="/logout"><input type="submit" value="logout"></form>
-	</c:if> 
+	</c:if>
+</div>
+
+<div>
+	<button id="btn">click</button>
 </div>
 
 <script type="text/javascript">
 $("#form").submit(function(event) {
 	isLogout = true;
+});
+
+$('#btn').click(function() {
+	$.ajax('/get')
+	.done(function() {
+	})
+	.fail(function() {
+		alert('fail!');	
+	});
 });
 </script>
 
